@@ -12,25 +12,45 @@ public class StringSortingTest {
 		stringSorting = new StringSorting();
 	}
 	@Test
-	public void numericalValueTest(){
-		int x = stringSorting.numericalValue("a");
-		int y = stringSorting.numericalValue("z");
-		Assert.assertEquals(x, 1);
-		Assert.assertEquals(y, 26);
-	}
-	@Test
-	public void arraySortTest1(){
-	    Integer x[] = {38,6,55};
-	    String y[] = {"tem","cab","exz"};
+	public void test_sortStringsByCost_sortStringArrayBasedOnEachStringNumericalValueInAscendingOrder(){
+	    String strArray[] = {"tem","cab","exz"};
 	    String expected[] = {"cab","tem","exz"};
-		Assert.assertArrayEquals(expected, stringSorting.arraySort(x, y));
+		Assert.assertArrayEquals(expected, stringSorting.sortStringsByCost(strArray));
 	}
+	
 	@Test
-	public void arraySortTest2(){
+	public void test_sortStringsByCost_sortStringArrayForDifferentStringLength(){
+	    String strArray[] = {"t","cab","xz"};
+	    String expected[] = {"cab","t","xz"};
+	    String actual[] = stringSorting.sortStringsByCost(strArray);
+		Assert.assertArrayEquals(expected, actual);
+	}
+	
+	@Test
+	public void test_numericalValue_getNumericalValueOfCharacterBasedOnItsPosition(){
+		int valA= stringSorting.numericalValue("a");
+		int valB = stringSorting.numericalValue("b");
+		int valZ = stringSorting.numericalValue("z");
+		Assert.assertEquals(valA, 1);
+		Assert.assertEquals(valB, 2);
+		Assert.assertEquals(valZ, 26);
+	}
+	
+	@Test
+	public void test_arraySort_sortsStringArrayToMatchInegerArrayForOneCharacter(){
 	    Integer x[] = {26,25,24};
 	    String y[] = {"z","y","x"};
 	    String expected[] = {"x","y","z"};
 		Assert.assertArrayEquals(expected, stringSorting.arraySort(x, y));
 
 	}
+	
+	@Test
+	public void test_arraySort_sortsStringArrayToMatchIntegerArrayForMoreThanOneCharacter(){
+	    Integer valueArray[] = {38,6,55};
+	    String strArray[] = {"tem","cab","exz"};
+	    String expected[] = {"cab","tem","exz"};
+		Assert.assertArrayEquals(expected, stringSorting.arraySort(valueArray, strArray));
+	}
+	
 }

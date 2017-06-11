@@ -1,22 +1,23 @@
 import java.util.Arrays;
 public class StringSorting {
-
+	static final int asciiOffset = 96;
+	
 	public String[] sortStringsByCost(String[] strArray){
 		Integer[] intOutput = new Integer[strArray.length];
 		String[] strOutput = new String[strArray.length];
-		int y = 0;
+		int charNumericalValue = 0;
 		for(int i = 0 ; i < strArray.length ; i++){
-			y = numericalValue(strArray[i]);
-			intOutput[i] = y;
+			charNumericalValue = numericalValue(strArray[i]);
+			intOutput[i] = charNumericalValue;
 		}
 		strOutput = arraySort(intOutput, strArray);
 		return strOutput;
 	}
 
-	public int numericalValue(String x){
+	public int numericalValue(String str){
 		int value = 0;
-		for (int i = 0; i < x.length(); i++){
-			value = value + ((int)(x.charAt(i)))-96;
+		for (int i = 0; i < str.length(); i++){
+			value = value + ((int)(str.charAt(i)) - asciiOffset);
 		}
 		return value;
 	}
